@@ -2,6 +2,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, ConversationHandler, MessageHandler, filters, ContextTypes
 from toLatinAlph import to_latin
 from translations import translation_official, translation_yevhen, translation_custom
+import os
 
 BOT_NAME = "@toLatinBot "
 
@@ -69,8 +70,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(final_text)
 
 def main():
+    token = os.getenv("BOT_TOKEN")
     # Insert your BotFather token here
-    application = Application.builder().token("8651073988:AAEH-Jo5JQ07YZEw4UF3eTFhKqJekNE2KZ0").build()
+    application = Application.builder().token(token).build()
 
     # Tell the bot to listen for text messages (ignoring commands like /start)
 
