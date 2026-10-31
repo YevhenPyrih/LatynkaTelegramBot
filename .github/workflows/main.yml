@@ -1,0 +1,16 @@
+name: Run Application
+
+on: [push]
+
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Run my app with secret
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }} 
+        # 2. Run your code normally
+        run: node bot.py  # Or python app.py, dotnet run, etc.
